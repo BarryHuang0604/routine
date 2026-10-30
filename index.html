@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#245e55">
+    <title>Weekly · 我的每週計畫</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header class="topbar">
+            <a class="brand" href="#home">WEEKLY<span class="dot">.</span></a>
+            <span id="todayLabel" class="today-label"></span>
+        </header>
+
+        <section id="home" class="view">
+            <div class="hero">
+                <p class="eyebrow">MY WEEKLY PLAN</p>
+                <h1>安排好每一天。</h1>
+                <p class="subtext">簡單規劃，照著自己的步調完成。</p>
+            </div>
+            <div class="home-grid">
+                <a class="choice" href="#edit">
+                    <span class="choice-icon">✎</span>
+                    <span class="choice-title">設定課表、代辦表</span>
+                    <span class="choice-desc">安排每週時段與事項</span>
+                    <span class="choice-arrow">↗</span>
+                </a>
+                <a class="choice" href="#check">
+                    <span class="choice-icon">✓</span>
+                    <span class="choice-title">勾選完成待辦</span>
+                    <span class="choice-desc">查看今天，完成就打勾</span>
+                    <span class="choice-arrow">↗</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="edit" class="view" hidden>
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">EDIT SCHEDULE</p>
+                    <h1>設定課表、代辦表</h1>
+                    <p class="subtext">點選格子即可編輯，內容會自動儲存。</p>
+                </div>
+                <a class="back" href="#home">← 返回首頁</a>
+            </div>
+            <form id="slotForm" class="slot-form">
+                <label>開始時間 <input type="time" id="startTime" value="18:00" required></label>
+                <label>結束時間 <input type="time" id="endTime" value="19:00" required></label>
+                <button class="primary" type="submit">＋ 新增時段</button>
+            </form>
+            <p id="slotMessage" class="message" aria-live="polite"></p>
+            <div class="table-scroll"><table id="editTable" class="schedule-table"></table></div>
+            <p class="footnote">時段可自由新增、刪除；每格可以填入不同事項。</p>
+        </section>
+
+        <section id="check" class="view" hidden>
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">DAILY CHECKLIST</p>
+                    <h1>勾選完成待辦</h1>
+                    <p class="subtext">今天的勾選狀態會在隔天自動重置。</p>
+                </div>
+                <a class="back" href="#home">← 返回首頁</a>
+            </div>
+            <div class="progress-line">
+                <span id="progressLabel">今日完成 0 / 0</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+            <div class="table-scroll"><table id="checkTable" class="schedule-table"></table></div>
+            <p class="footnote">只會重置勾選，不會清除課表內容。資料保存在這台裝置的瀏覽器中。</p>
+        </section>
+
+        <footer>WEEKLY · A little progress, every day.</footer>
+    </main>
+</body>
+</html>
